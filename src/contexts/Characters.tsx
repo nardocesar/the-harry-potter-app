@@ -23,10 +23,14 @@ export const CharactersContext = createContext<
 const storedPrefferedHouse = getLocalStorage("prefferedHouse");
 const storedFavoriteCharacter = getLocalStorage("favoriteCharacter");
 
+if (!storedPrefferedHouse) {
+  setLocalStorage("prefferedHouse", "Gryffindor");
+}
+
 export const CharactersProvider = ({ children }: PropsWithChildren) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [prefferedHouse, setPrefferedHouse] = useState<House>(
-    (storedPrefferedHouse as House) ?? "Gryffindor"
+    storedPrefferedHouse as House
   );
   const [favoriteCharacter, setFavoriteCharacter] = useState<string | null>(
     storedFavoriteCharacter ?? null
