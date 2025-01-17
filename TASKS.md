@@ -29,12 +29,12 @@
 
 ## 2. API Integration
 
-- [ ] Create types for API responses
+- [x] Create types for API responses
 - [x] Implement API service with following endpoints:
   - `/characters` (all characters)
   - `/characters/students` (students only)
   - `/characters/staff` (staff only)
-- [ ] Add error handling and loading states
+- [x] Add error handling and loading states
 
 ## 3. State Management
 
@@ -45,8 +45,8 @@
 
 ### Navigation
 
-- [ ] Create responsive navigation bar
-- [ ] Implement routing between views:
+- [x] Create responsive navigation bar
+- [x] Implement routing between views:
   - Home
   - All Characters
   - Students
@@ -55,10 +55,9 @@
 
 ### Character Features
 
-- [ ] Create character list view with filtering
-- [ ] Implement character detail page
-- [ ] Add favorite functionality
-- [ ] Create house preference selector
+- [x] Implement character detail page
+- [x] Add favorite functionality
+- [x] Create house preference selector
 
 ### Styling
 
@@ -69,7 +68,7 @@
   Hufflepuff: #FFD800, #000000
   Ravenclaw: #0E1A40, #946B2D
   ```
-- [ ] Create responsive layouts
+- [x] Create responsive layouts
 
 ## 5. TypeScript Implementation
 
