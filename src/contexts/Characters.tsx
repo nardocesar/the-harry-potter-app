@@ -1,5 +1,6 @@
 "use client";
 
+import { getLocalStorage, setLocalStorage } from "@/services/localStorage";
 import { Character, House } from "@/types";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 
@@ -9,22 +10,37 @@ type CharactersContextType = {
   characters: Character[];
   setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
   prefferedHouse: House;
-  setPrefferedHouse: React.Dispatch<React.SetStateAction<House>>;
+  setPrefferedHouse: (house: House) => void;
   houses: House[];
   favoriteCharacter: string | null;
-  setFavoriteCharacter: React.Dispatch<React.SetStateAction<string | null>>;
+  setFavoriteCharacter: (character: string | null) => void;
 };
 
 export const CharactersContext = createContext<
   CharactersContextType | undefined
 >(undefined);
 
+const storedPrefferedHouse = getLocalStorage("prefferedHouse");
+const storedFavoriteCharacter = getLocalStorage("favoriteCharacter");
+
 export const CharactersProvider = ({ children }: PropsWithChildren) => {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [prefferedHouse, setPrefferedHouse] = useState<House>("Gryffindor");
-  const [favoriteCharacter, setFavoriteCharacter] = useState<string | null>(
-    null
+  const [prefferedHouse, setPrefferedHouse] = useState<House>(
+    (storedPrefferedHouse as House) ?? "Gryffindor"
   );
+  const [favoriteCharacter, setFavoriteCharacter] = useState<string | null>(
+    storedFavoriteCharacter ?? null
+  );
+
+  const handleSetPrefferedHouse = (house: House) => {
+    setPrefferedHouse(house);
+    setLocalStorage("prefferedHouse", house);
+  };
+
+  const handleSetFavoriteCharacter = (character: string | null) => {
+    setFavoriteCharacter(character);
+    setLocalStorage("favoriteCharacter", character ?? "");
+  };
 
   return (
     <CharactersContext.Provider
@@ -32,10 +48,10 @@ export const CharactersProvider = ({ children }: PropsWithChildren) => {
         characters,
         setCharacters,
         prefferedHouse,
-        setPrefferedHouse,
+        setPrefferedHouse: handleSetPrefferedHouse,
         houses,
         favoriteCharacter,
-        setFavoriteCharacter,
+        setFavoriteCharacter: handleSetFavoriteCharacter,
       }}
     >
       {children}
