@@ -11,8 +11,8 @@ type CharactersContextType = {
   prefferedHouse: House;
   setPrefferedHouse: React.Dispatch<React.SetStateAction<House>>;
   houses: House[];
-  favoriteCharacter: Character | null;
-  setFavoriteCharacter: React.Dispatch<React.SetStateAction<Character | null>>;
+  favoriteCharacter: string | null;
+  setFavoriteCharacter: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const CharactersContext = createContext<
@@ -22,7 +22,7 @@ export const CharactersContext = createContext<
 export const CharactersProvider = ({ children }: PropsWithChildren) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [prefferedHouse, setPrefferedHouse] = useState<House>("Gryffindor");
-  const [favoriteCharacter, setFavoriteCharacter] = useState<Character | null>(
+  const [favoriteCharacter, setFavoriteCharacter] = useState<string | null>(
     null
   );
 

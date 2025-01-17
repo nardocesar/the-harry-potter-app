@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { CharactersProvider } from "@/context/Characters";
+import { Context } from "@/contexts/Context";
 
 export const metadata: Metadata = {
   title: "The Harry Potter App",
@@ -18,15 +18,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <CharactersProvider>
+        <Context>
           <div className="flex flex-col min-h-screen">
             <Header />
-            <div className="flex flex-1">
+            <div className="flex flex-col lg:flex-row flex-1">
               <Sidebar />
-              <main className="flex w-3/4">{children}</main>
+              <main className="flex flex-1 w-full lg:w-3/4 flex-wrap ">
+                {children}
+              </main>
             </div>
           </div>
-        </CharactersProvider>
+        </Context>
       </body>
     </html>
   );
