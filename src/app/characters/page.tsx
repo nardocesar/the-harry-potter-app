@@ -1,3 +1,5 @@
+import { Characters } from "@/features/Characters";
+
 export default function CharactersPage() {
-  return <div>Characters</div>;
+  return <Characters />;
 }

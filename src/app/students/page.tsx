@@ -1,3 +1,5 @@
+import { Students } from "@/features/Students";
+
 export default function StudentsPage() {
-  return <div>Students</div>;
+  return <Students />;
 }
