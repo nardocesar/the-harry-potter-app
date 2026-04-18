@@ -1,3 +1,5 @@
+import { Staff } from "@/features/Staff";
+
 export default function StaffPage() {
-  return <div>Staff</div>;
+  return <Staff />;
 }

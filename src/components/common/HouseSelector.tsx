@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useCharactersContext } from "@/context/Characters";
+import { useCharactersContext } from "@/contexts/Characters";
 import { House } from "@/types";
 
 export const HouseSelector = () => {
